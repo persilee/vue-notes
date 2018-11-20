@@ -78,9 +78,24 @@ const Note = {
     `,
 }
 
+const Message = {
+    props: [
+        'messageText'
+    ],
+    template: `
+        <div class="ui small icon message">
+            <i class="bullhorn icon"></i>
+            <div class="content">
+                <p v-html="messageText"></p>
+            </div>
+        </div>
+    `
+}
+
 const Notes = {
     components: {
         Note,
+        Message,
     },
     data() {
         return {
@@ -116,6 +131,9 @@ const Notes = {
                 <i class="bookmark outline icon"></i>
                 Notes App with Vue.js
             </h4>
+            <message 
+                message-text="点击 <strong>添加笔记</strong> 按钮可新增笔记，点击 <strong>笔记标题</strong> 可显示笔记详情，笔记可自动保存。"
+            ></message>
             <a 
                 class="ui right floated basic violet button"
                 @click="create"
