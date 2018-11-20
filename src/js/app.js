@@ -2,9 +2,14 @@ const Editor = {
     props: [
         'entityObject'
     ],
-    data(){
+    data() {
         return {
             entity: this.entityObject
+        }
+    },
+    methods:{
+        update() {
+            this.$emit('update')
         }
     },
     template: `
@@ -15,6 +20,7 @@ const Editor = {
                     rows="5" 
                     placeholder="写点啥..."
                     v-model="entity.body"
+                    @input="update"
                 ></textarea>
             </div>
         </div>
@@ -27,21 +33,43 @@ const Note = {
     ],
     data() {
         return {
-            entity: this.entityObject
+            entity: this.entityObject,
+            open: false,
         }
     },
     components: {
         Editor,
     },
+    computed: {
+        header() {
+            return _.truncate(this.entity.body, {
+                length: 30
+            })
+        }
+    },
+    methods: {
+        save() {
+            loadCollection('notes')
+                .then((collection) => {
+                    collection.update(this.entity)
+                    db.saveDatabase()
+                })
+        }
+    },
     template: `
         <div class="item">
             <div class="content">
-                <div class="header">
-                    {{ entity.body || '新建笔记' }}
+                <div 
+                    class="header" 
+                    @click="open = !open"
+                >
+                    {{ header || '新建笔记' }}
                 </div>
                 <div class="extra">
                     <editor 
                         :entity-object="entity"
+                        v-if="open"
+                        @update="save"
                     >
                     </editor>
                 </div>
@@ -71,10 +99,10 @@ const Notes = {
             })
     },
     methods: {
-        create(){
+        create() {
             loadCollection('notes')
                 .then((collection) => {
-                   const entity = collection.insert({
+                    const entity = collection.insert({
                         body: ''
                     })
                     db.saveDatabase()
