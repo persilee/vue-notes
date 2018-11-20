@@ -13,3 +13,7 @@
     display: block;
     cursor: pointer;
 }
+
+.ui.small.message {
+    margin: 36px 0;
+}
