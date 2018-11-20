@@ -174,6 +174,12 @@ const Notes = {
                     :key="entity.$loki"
                     @destroy="destroy"
                 ></note>
+                <span 
+                    class="ui small disabled header"
+                    v-if="!this.entities.length"
+                >
+                还没有笔记，请点击 ‘添加笔记’ 按钮，新增笔记 📒 。
+                </span>
             </div>
             
         </div>
