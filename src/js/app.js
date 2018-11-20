@@ -161,7 +161,7 @@ const Notes = {
                 Notes App with Vue.js
             </h4>
             <message 
-                message-text = "点击 <strong>添加笔记</strong> 按钮可新增笔记，点击 <strong>笔记标题</strong> 可显示笔记详情，点击 <strong><i class='trash alternate outline icon'></i></strong> 可删除笔记，笔记可自动保存。"
+                message-text = "点击 <strong>添加笔记</strong> 按钮可新增笔记，点击 <strong>笔记标题</strong> 可显示笔记详情及编辑笔记，点击 <strong><i class='trash alternate outline icon'></i></strong> 可删除笔记，笔记可自动保存。"
             ></message>
             <a 
                 class="ui right floated basic violet button"
