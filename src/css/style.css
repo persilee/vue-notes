@@ -17,3 +17,16 @@
 .ui.small.message {
     margin: 36px 0;
 }
+
+.ui.items>.item>.meta {
+    width: 88px;
+    color: rgba(0, 0, 0, 0.4);
+    margin-top: 0px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.extra .trash.icon {
+    cursor: pointer;
+}
