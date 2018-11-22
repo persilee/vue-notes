@@ -16,8 +16,7 @@ const Editor = {
         <div class="ui form">
             <div class="field">
                 <textarea 
-                    cols="30" 
-                    rows="5" 
+                    cols="35" 
                     placeholder="写点啥..."
                     v-model="entity.body"
                     @input="update"
